@@ -15,7 +15,7 @@ class FileStorage():
         _type_: _description_
     """
 
-    __file_path = ""
+    __file_path = "file.json"
     __objects = {}
 
     def __init__(self):
@@ -38,11 +38,11 @@ class FileStorage():
             json.dump(dict, file)
 
     def reload(self):
-        if os.path.exists(FileStorage.__file_path):
-            with open(FileStorage.__file_path, 'r') as file:
-                data = json.load(file)
-                for key, obj_data in data.items():
-                    class_name, obj_id = key.split('.')
-                    cls = globals()[class_name]
-                    obj = cls(**obj_data)
-                    FileStorage.__objects[key] = obj
+            from models.base_model import BaseModel
+
+            dct = {'BaseModel': BaseModel}
+
+            if os.path.exists(FileStorage.__file_path) is True:
+                with open(FileStorage.__file_path, 'r') as f:
+                    for value in json.load(f).values():
+                        self.new(dct[value['__class__']](**value))

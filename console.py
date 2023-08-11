@@ -1,4 +1,4 @@
-#!/usr/bin/pythob3
+#!/usr/bin/python3
 
 import cmd
 from models.base_model import BaseModel
@@ -12,8 +12,8 @@ class HBNBCommand(cmd.Cmd):
     Returns:
         _type_: _description_
     """
-     calsses = ['BaseModel', 'User', 'Amenity',
-                 'Place', 'City', 'State', 'Review']
+    calsses = ['BaseModel', 'User', 'Amenity',
+    'Place', 'City', 'State', 'Review']
 
     prompt = '(hbnb) '
 
@@ -30,20 +30,16 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         pass
 
-    def do_create(self, arg):
-        if not arg:
+    def do_create(self, type_model):
+        if not type_model:
             print("** class name missing **")
-            return
-
-        try:
-            cls = globals()[arg]
-        except KeyError:
+        elif type_model not in HBNBCommand.calsses:
             print("** class doesn't exist **")
-            return
-
-        objt = cls()
-        objt.save()
-        print(objt.id)
+        else:
+            dct = {'BaseModel': BaseModel}
+            my_model = dct[type_model]()
+            print(my_model.id)
+            my_model.save()
 
 
 if __name__ == "__main__":
