@@ -33,3 +33,7 @@ class FileStorage():
         with open(FileStorage.__file_path, 'w') as file:
             json.dump(dict, file)
 
+    def def reload(self):
+        if os.path.exists(FileStorage.__file_path):
+            with open(FileStorage.__file_path, 'r') as file:
+                data = json.load(file)
