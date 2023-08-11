@@ -1,4 +1,8 @@
+#!/usr/bin/pythob3
+
 import cmd
+from models.base_model import BaseModel
+
 
 """_summary_"""
 
@@ -8,6 +12,9 @@ class HBNBCommand(cmd.Cmd):
     Returns:
         _type_: _description_
     """
+     calsses = ['BaseModel', 'User', 'Amenity',
+                 'Place', 'City', 'State', 'Review']
+
     prompt = '(hbnb) '
 
     def do_quit(self, arg):
@@ -22,6 +29,21 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         pass
+
+    def do_create(self, arg):
+        if not arg:
+            print("** class name missing **")
+            return
+
+        try:
+            cls = globals()[arg]
+        except KeyError:
+            print("** class doesn't exist **")
+            return
+
+        objt = cls()
+        objt.save()
+        print(objt.id)
 
 
 if __name__ == "__main__":
