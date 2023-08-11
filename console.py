@@ -23,7 +23,7 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_help(self, line):
-        cmd.Cmd.do_help(slef, line)
+        cmd.Cmd.do_help(self, line)
 
     def emptyline(self):
         pass
