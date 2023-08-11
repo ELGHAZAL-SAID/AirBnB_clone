@@ -26,21 +26,10 @@ class FileStorage():
 
     def save(self):
         dict = {}
+        for key, obj in FileStorage.__objects.items():
+            serialized_data = obj.to_dict()
+            dict[key] = serialized_data
+
         with open(FileStorage.__file_path, 'w') as file:
             json.dump(dict, file)
 
-
-serialized_objects = {}  # Create an empty dictionary to store serialized objects
-
-# Iterate through each key-value pair in the FileStorage.__objects dictionary
-for key, obj in FileStorage.__objects.items():
-    # 'key' is the combination of class name and object ID, 'obj' is the object itself
-    
-    # Call the 'to_dict()' method on the object to serialize its attributes into a dictionary
-    serialized_data = obj.to_dict()
-    
-    # Use the 'key' as the dictionary key and the 'serialized_data' as the value
-    serialized_objects[key] = serialized_data
-
-# After the loop, 'serialized_objects' contains serialized representations of all objects
-# where each key is the unique identifier and the corresponding value is the serialized data
