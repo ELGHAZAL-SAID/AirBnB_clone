@@ -1,7 +1,19 @@
 import cmd
 
+"""_summary_
+
+Returns:
+    _type_: _description_
+"""
+
+
 class HBNBCommand(cmd.Cmd):
 
+    """_summary_
+
+    Returns:
+        _type_: _description_
+    """
     prompt = '(hbnb)'
 
     def do_quit(self, line):
@@ -16,5 +28,6 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         pass
 
-    if __name__ == "__main__":
-        HBNBCommnad().cmdloo()
+
+if __name__ == "__main__":
+    HBNBCommand().cmdloop()
