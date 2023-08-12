@@ -4,7 +4,8 @@
 description
 """
 
-import datetime, unittest
+import datetime
+import unittest
 from models.user import User
 
 
@@ -15,14 +16,15 @@ class Test_User(unittest.TestCase):
         unittest (_type_): _description_
     """
     user = User()
-    
+
     def test_existed_User(self):
         """description"""
-        self.assertEqual(str(type(self.user)), "<class 'models.user.User'>")
+        self.assertEqual(str(type(self.user)),
+                         "<class 'models.user.User'>")
 
     def test_inheritance(self):
         self.assertIsInstance(self.user, User)
-    
+
     def HasAttributes(self):
         """description"""
         self.assertTrue(hasattr(self.u, 'email'))

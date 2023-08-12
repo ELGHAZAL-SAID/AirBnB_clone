@@ -4,7 +4,8 @@
 description
 """
 
-import datetime, unittest
+import datetime
+import unittest
 from models.city import City
 
 
@@ -15,14 +16,14 @@ class Test_City(unittest.TestCase):
         unittest (_type_): _description_
     """
     c = City()
-    
+
     def test_existed_City(self):
         """description"""
         self.assertEqual(str(type(self.c)), "<class 'models.city.City'>")
 
     def test_inheritance(self):
         self.assertIsInstance(self.c, City)
-    
+
     def HasAttributes(self):
         """description"""
         self.assertTrue(hasattr(self.c, 'state_id'))

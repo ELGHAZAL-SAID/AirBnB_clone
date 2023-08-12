@@ -4,7 +4,8 @@
 description
 """
 
-import datetime, unittest
+import datetime
+import unittest
 from models.review import Review
 
 
@@ -15,14 +16,14 @@ class Test_Review(unittest.TestCase):
         unittest (_type_): _description_
     """
     r = Review()
-    
+
     def test_existed_Review(self):
         """description"""
         self.assertEqual(str(type(self.r)), "<class 'models.review.Review'>")
 
     def test_inheritance(self):
         self.assertIsInstance(self.r, Review)
-    
+
     def HasAttributes(self):
         """description"""
         self.assertTrue(hasattr(self.r, 'place_id'))

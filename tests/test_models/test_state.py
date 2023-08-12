@@ -4,7 +4,8 @@
 description
 """
 
-import datetime, unittest
+import datetime
+import unittest
 from models.state import State
 
 
@@ -15,14 +16,14 @@ class Test_State(unittest.TestCase):
         unittest (_type_): _description_
     """
     state = State()
-    
+
     def test_existed_State(self):
         """description"""
         self.assertEqual(str(type(self.state)), "<class 'models.state.State'>")
 
     def test_inheritance(self):
         self.assertIsInstance(self.state, State)
-    
+
     def HasAttributes(self):
         """description"""
         self.assertTrue(hasattr(self.state, 'name'))

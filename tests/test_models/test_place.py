@@ -4,7 +4,8 @@
 description
 """
 
-import datetime, unittest
+import datetime
+import unittest
 from models.place import Place
 from models import storage
 from models.engine.file_storage import FileStorage
@@ -17,14 +18,14 @@ class Test_Place(unittest.TestCase):
         unittest (_type_): _description_
     """
     p = Place()
-    
+
     def test_existed_Place(self):
         """description"""
         self.assertEqual(str(type(self.p)), "<class 'models.place.Place'>")
 
     def test_inheritance(self):
         self.assertIsInstance(self.p, Place)
-    
+
     def HasAttributes(self):
         """description"""
         att = storage.attributes()["Place"]
@@ -49,13 +50,11 @@ class Test_Place(unittest.TestCase):
             ('created_at', datetime.datetime),
             ('updated_at', datetime.datetime)
         ]
-        
+
         for attr_name, expected_type in attributes:
             with self.subTest(attr_name=attr_name):
                 attr_value = getattr(self.p, attr_name)
                 self.assertIsInstance(attr_value, expected_type)
-
-
 
 
 if __name__ == "__main__":
