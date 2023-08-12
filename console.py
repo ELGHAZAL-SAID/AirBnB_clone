@@ -3,9 +3,14 @@
 """_summary_"""
 
 import cmd
-from models.base_model import BaseModel
 from models import storage
+from models.base_model import BaseModel
 from models.user import User
+from models.place import Place
+from models.city import City
+from models.amenity import Amenity
+from models.state import State
+from models.review import Review
 import shlex
 
 
@@ -14,6 +19,7 @@ class HBNBCommand(cmd.Cmd):
     Returns:
         _type_: _description_
     """
+
     cal = ['BaseModel', 'User', 'Amenity', 'Place', 'City', 'State', 'Review']
 
     prompt = '(hbnb) '
@@ -38,7 +44,10 @@ class HBNBCommand(cmd.Cmd):
         elif type_model not in HBNBCommand.cal:
             print("** class doesn't exist **")
         else:
-            dct = {'BaseModel': BaseModel, 'User': User, 'State': State, "City": City, "Amenity":Amenity, 'Amenity': Place, 'Review': Review}
+            dct = {'BaseModel': BaseModel, 'User': User, 'Place': Place,
+                   'City': City, 'Amenity': Amenity, 'State': State,
+                   'Review': Review}
+
             my_model = dct[type_model]()
             print(my_model.id)
             my_model.save()
