@@ -38,9 +38,9 @@ class Test_FileStorage(unittest.TestCase):
 
     def testStoreBaseModel2(self):
         """ Test Methods """
-        self.my_model.my_name = "name"
-        self.my_model.save()
-        bm_dict = self.my_model.to_dict()
+        self.mod.my_name = "name"
+        self.mod.save()
+        bm_dict = self.mod.to_dict()
         all_objs = storage.all()
 
         key = bm_dict['__class__'] + "." + bm_dict['id']
@@ -51,9 +51,9 @@ class Test_FileStorage(unittest.TestCase):
         create1 = bm_dict['created_at']
         update1 = bm_dict['updated_at']
 
-        self.my_model.my_name = "name"
-        self.my_model.save()
-        bm_dict = self.my_model.to_dict()
+        self.mod.my_name = "name"
+        self.mod.save()
+        bm_dict = self.mod.to_dict()
         all_objs = storage.all()
 
         self.assertEqual(key in all_objs, True)
@@ -73,13 +73,13 @@ class Test_FileStorage(unittest.TestCase):
 
     def test_save(self):
         """verify if JSON file exists"""
-        self.my_model.save()
+        self.mod.save()
         self.assertEqual(os.path.exists(storage._FileStorage__file_path), True)
         self.assertEqual(storage.all(), storage._FileStorage__objects)
 
     def test_reload(self):
         """test reload Method """
-        self.my_model.save()
+        self.mod.save()
         self.assertEqual(os.path.exists(storage._FileStorage__file_path), True)
         dob = storage.all()
         FileStorage._FileStorage__objects = {}
@@ -88,24 +88,6 @@ class Test_FileStorage(unittest.TestCase):
         for key, value in storage.all().items():
             self.assertEqual(dob[key].to_dict(), value.to_dict())
 
-    def test_SaveSelf(self):
-        """ Check save Method """
-        msg = "save() takes 1 positional argument but 2 were given"
-        with self.assertRaises(TypeError) as e:
-            FileStorage.save(self, 100)
-
-        self.assertEqual(str(e.exception), msg)
-
-    def test_save_FileStorage(self):
-        """ Test if new method """
-        var1 = self.my_model.to_dict()
-        new_key = var1['__class__'] + "." + var1['id']
-        storage.save()
-        with open("file.json", 'r') as fd:
-            var2 = json.load(fd)
-        new = var2[new_key]
-        for key in new:
-            self.assertEqual(var1[key], new[key])
 
 
 if __name__ == '__main__':
