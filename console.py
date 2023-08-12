@@ -38,7 +38,7 @@ class HBNBCommand(cmd.Cmd):
         elif type_model not in HBNBCommand.cal:
             print("** class doesn't exist **")
         else:
-            dct = {'BaseModel': BaseModel, 'User': User}
+            dct = {'BaseModel': BaseModel, 'User': User, 'State': State, "City": City, "Amenity":Amenity, 'Amenity': Place, 'Review': Review}
             my_model = dct[type_model]()
             print(my_model.id)
             my_model.save()
