@@ -9,11 +9,11 @@ from models import storage
 
 class BaseModel():
 
-    """BaseModel class that defines common attributes/methods"""
+    """BaseModel class that defines common attributes/methods
+    """
 
     def __init__(self, *args, **kwargs):
-        """
-        Initializes the BaseModel instance
+        """Initializes the BaseModel instance
         """
 
         if kwargs:
@@ -32,32 +32,23 @@ class BaseModel():
             storage.new(self)
 
     def __str__(self):
-        """
-        Returns a string representation of the BaseModel instance.
-
-        Returns:
-            str: String representation in the format:
-            "[<class name>] (<self.id>) <self.__dict__>"
+        """Returns a string representation of the BaseModel instance.
         """
         return ("[{}] ({}) {}"
                 "".format(self.__class__.__name__, self.id, self.__dict__))
 
     def save(self):
-        """
-        Updates the 'updated_at' attribute with the current datetime.
+        """Updates the 'updated_at' attribute with the current datetime.
         """
         self.updated_at = datetime.now()
         storage.save()
 
     def to_dict(self):
-        """
-        Converts the instance attributes to a dictionary representation.
-
-        Returns:
-            dict: Dictionary containing instance attributes.
+        """Converts the instance attributes to a dictionary representation.
         """
         dict = self.__dict__.copy()
         dict["__class__"] = self.__class__.__name__
         dict['created_at'] = self.created_at.isoformat()
         dict['updated_at'] = self.updated_at.isoformat()
+
         return dict
