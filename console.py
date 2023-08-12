@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+"""_summary_"""
+
 import cmd
 
 from models.base_model import BaseModel
@@ -8,7 +10,6 @@ from models.user import User
 
 import shlex
 
-"""_summary_"""
 
 
 class HBNBCommand(cmd.Cmd):
