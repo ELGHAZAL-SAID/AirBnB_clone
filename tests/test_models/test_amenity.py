@@ -4,7 +4,8 @@
 description
 """
 
-import datetime, unittest
+import datetime
+import unittest
 from models.amenity import Amenity
 
 
@@ -15,14 +16,15 @@ class Test_Amenity(unittest.TestCase):
         unittest (_type_): _description_
     """
     amenity = Amenity()
-    
+
     def test_existed_Amenity(self):
         """description"""
-        self.assertEqual(str(type(self.amenity)), "<class 'models.amenity.Amenity'>")
+        self.assertEqual(str(type(self.amenity)),
+                         "<class 'models.amenity.Amenity'>")
 
     def test_inheritance(self):
         self.assertIsInstance(self.amenity, Amenity)
-    
+
     def HasAttributes(self):
         """description"""
         self.assertTrue(hasattr(self.amenity, 'name'))
