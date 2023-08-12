@@ -28,9 +28,6 @@ class HBNBCommand(cmd.Cmd):
         print()
         return True
 
-    def do_help(self, arg):
-        cmd.Cmd.do_help(self, arg)
-
     def emptyline(self):
         pass
 
