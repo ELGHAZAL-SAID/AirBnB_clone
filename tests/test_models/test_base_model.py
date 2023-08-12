@@ -6,8 +6,8 @@ import unittest
 import os
 import datetime
 
-from models import storage
-from models.engine.file_storage impodrt FileStorage
+
+from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 
 
@@ -30,13 +30,13 @@ class Test_BaseModel(unittest.TestCase):
         self.assertEqual(self.mod.id, mod_json['id'])
 
     def test_save(self):
-        """ chacks if save method updates the public instances """
+        """ checks if save method updates the public instances """
         self.mod.first_name = "name"
         self.mod.save()
 
-        self.assertInstance(self.moade.id, str)
-        self.assertInstance(self.mod.created_at, datetime.datetime)
-        self. assertInstance(self.mod.updated_at, datetime.datetime)
+        self.assertIsInstance(self.mod.id, str)
+        self.assertIsInstance(self.mod.created_at, datetime.datetime)
+        self. assertIsInstance(self.mod.updated_at, datetime.datetime)
 
         dict_one = self.mod.to_dict()
 
@@ -45,9 +45,8 @@ class Test_BaseModel(unittest.TestCase):
         dict_two = self.mod.to_dict()
 
         self.assertEqual(dict_one['created_at'], dict_two['created_at'])
-        self.assertEqual(dict_one['updated_at'], dict_two['updated_at'])
+        self.assertNotEqual(dict_one['updated_at'], dict_two['updated_at'])
 
 
-it __name__ == '__main__':
+if __name__ == '__main__':
     unittest.main()
-
