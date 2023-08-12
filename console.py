@@ -39,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
         elif type_model not in HBNBCommand.cal:
             print("** class doesn't exist **")
         else:
-            dct = {'BaseModel': BaseModel, 'User' : User}
+            dct = {'BaseModel': BaseModel, 'User': User}
             my_model = dct[type_model]()
             print(my_model.id)
             my_model.save()
@@ -94,6 +94,7 @@ class HBNBCommand(cmd.Cmd):
                 if type_ == value.__class__.__name__:
                     instance_list = [value.__str__()]
                     print(instance_list)
+
     def do_update(self, arg):
         if not arg:
             print("** class name missing **")

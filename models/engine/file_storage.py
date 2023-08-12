@@ -41,7 +41,7 @@ class FileStorage():
         from models.base_model import BaseModel
         from models.user import User
 
-        dct = {'BaseModel': BaseModel, 'User' : User}
+        dct = {'BaseModel': BaseModel, 'User': User}
 
         if os.path.exists(FileStorage.__file_path) is True:
             with open(FileStorage.__file_path, 'r') as f:
