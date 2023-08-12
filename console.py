@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 
 import cmd
+
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
+
 import shlex
 
 """_summary_"""
@@ -36,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
         elif type_model not in HBNBCommand.cal:
             print("** class doesn't exist **")
         else:
-            dct = {'BaseModel': BaseModel}
+            dct = {'BaseModel': BaseModel, 'User' : User}
             my_model = dct[type_model]()
             print(my_model.id)
             my_model.save()
