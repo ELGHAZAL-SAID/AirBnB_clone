@@ -25,7 +25,7 @@ class Test_City(unittest.TestCase):
     
     def HasAttributes(self):
         """description"""
-        self.assertTrue(hasattr(self.c, 'state_id')
+        self.assertTrue(hasattr(self.c, 'state_id'))
         self.assertTrue(hasattr(self.c, 'name'))
         self.assertTrue(hasattr(self.c, 'created_at'))
         self.assertTrue(hasattr(self.c, 'updated_at'))
