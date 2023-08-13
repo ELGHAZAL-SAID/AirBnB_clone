@@ -135,7 +135,7 @@ class HBNBCommand(cmd.Cmd):
                 return
             print("** no instance found **")
 
-    def dotMethod(self, arg):
+    def precmd(self, arg):
         """dot method   command input"""
         if '.' in arg and '(' in arg and ')' in arg:
             clas = arg.split('.')
