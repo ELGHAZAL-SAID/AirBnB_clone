@@ -145,7 +145,6 @@ class HBNBCommand(cmd.Cmd):
                 arg = camd[0] + ' ' + clas[0] + ' ' + args[0]
         return arg
 
-    def count(self, arg):
-        
+
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
