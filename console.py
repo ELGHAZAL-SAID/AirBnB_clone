@@ -142,9 +142,10 @@ class HBNBCommand(cmd.Cmd):
             camd = clas[1].split('(')
             args = camd[1].split(')')
             if clas[0] in HBNBCommand.cal and camd[0] in HBNBCommand.methods:
-                arg = camd0] + ' ' + clas[0] + ' ' + args[0]
+                arg = camd[0] + ' ' + clas[0] + ' ' + args[0]
         return arg
 
-
+    def count(self, arg):
+        
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
