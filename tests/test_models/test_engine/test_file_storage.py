@@ -88,6 +88,36 @@ class Test_FileStorage(unittest.TestCase):
         for key in new:
             self.assertEqual(var1[key], new[key])
 
+    def testreload(self):
+        """test if reload """
+        self.mod.save()
+        self.assertEqual(os.path.exists(storage._FileStorage__file_path), True)
+        dobj = storage.all()
+        FileStorage._FileStorage__objects = {}
+        self.assertNotEqual(dobj, FileStorage._FileStorage__objects)
+        storage.reload()
+        for key, value in storage.all().items():
+            self.assertEqual(dobj[key].to_dict(), value.to_dict())
+
+    def testSaveSelf(self):
+        """ Check save self """
+        msg = "save() takes 1 positional argument but 2 were given"
+        with self.assertRaises(TypeError) as e:
+            FileStorage.save(self, 100)
+
+        self.assertEqual(str(e.exception), msg)
+
+    def test_save_FileStorage(self):
+        """ Test if 'new' method is working good """
+        var1 = self.mod.to_dict()
+        new_key = var1['__class__'] + "." + var1['id']
+        storage.save()
+        with open("file.json", 'r') as fd:
+            var2 = json.load(fd)
+        new = var2[new_key]
+        for key in new:
+            self.assertEqual(var1[key], new[key])
+
 
 if __name__ == '__main__':
     unittest.main()
