@@ -93,7 +93,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def do_all(self, type_):
-        """ Prints string represention of all instances of a given class """
+        """ Prints instances of a given class as string"""
         if not type_:
             print("** class name missing **")
             return
@@ -107,7 +107,7 @@ class HBNBCommand(cmd.Cmd):
                     print(instance_list)
 
     def do_update(self, arg):
-        """ Updates an instance based on the class name and id """
+        """ Updates an instance based on the class and id """
         if not arg:
             print("** class name missing **")
             return
