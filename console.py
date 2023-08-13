@@ -19,7 +19,7 @@ class HBNBCommand(cmd.Cmd):
     Returns:
         _type_: _description_
     """
-
+    methods = ['create', 'show', 'update', 'all', 'destroy', 'count']
     cal = ['BaseModel', 'User', 'Amenity', 'Place', 'City', 'State', 'Review']
 
     prompt = '(hbnb) '
@@ -134,6 +134,16 @@ class HBNBCommand(cmd.Cmd):
                     storage.save()
                 return
             print("** no instance found **")
+
+    def dotMethod(self, arg):
+        """dot method   command input"""
+        if '.' in arg and '(' in arg and ')' in arg:
+            clas = arg.split('.')
+            camd = clas[1].split('(')
+            args = camd[1].split(')')
+            if clas[0] in HBNBCommand.cal and camd[0] in HBNBCommand.methods:
+                arg = camd0] + ' ' + clas[0] + ' ' + args[0]
+        return arg
 
 
 if __name__ == "__main__":
