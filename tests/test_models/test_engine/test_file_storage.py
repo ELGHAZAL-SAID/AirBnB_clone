@@ -79,7 +79,7 @@ class Test_FileStorage(unittest.TestCase):
 
     def test_save_FileStorage(self):
         """ Test new Method """
-        var1 = self.my_model.to_dict()
+        var1 = self.mod.to_dict()
         new_key = var1['__class__'] + "." + var1['id']
         storage.save()
         with open("file.json", 'r') as fd:
