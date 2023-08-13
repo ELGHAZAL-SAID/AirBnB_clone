@@ -136,7 +136,7 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
 
     def precmd(self, arg):
-        """dot method   command input"""
+        """precmd   command input"""
         if '.' in arg and '(' in arg and ')' in arg:
             clas = arg.split('.')
             camd = clas[1].split('(')
